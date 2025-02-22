@@ -1,0 +1,58 @@
+{
+  "coffees": {
+    "1": {
+      "name": "Chin Up",
+      "image": "https://i5.walmartimages.com/asr/7b1bc053-9e47-4b38-8f8d-74722a7e9a79.202a839f89131ae92ded6c30a958edb1.jpeg",
+      "origin": "Latin America",
+      "roastLevel": 3,
+      "elevation": "1200-2000",
+      "process": "Washed",
+      "varietals": "Various",
+      "tastingNotes": [
+        "Dark Chocolate",
+        "Cherry",
+        "Balanced"
+      ],
+      "purchaseLocation": "https://goodcitizencoffee.com/products/chin-up?selling_plan=3565191320&variant=42134167224472",
+      "personalNotes": "Used by many Nashville coffee shops",
+      "favorite": true,
+      "private": true
+    },
+    "2": {
+      "name": "Costa Rica El Cedral Natural",
+      "image": "https://anchorheadcoffee.com/cdn/shop/files/costa-rica-el-cedral_1100x.jpg?v=1727315198",
+      "origin": "Costa Rica",
+      "roastLevel": 3,
+      "elevation": "1900",
+      "process": "Natural",
+      "varietals": "Red Catuai",
+      "tastingNotes": [
+        "Blueberry",
+        "Butterscotch",
+        "Rose"
+      ],
+      "purchaseLocation": "https://anchorheadcoffee.com/collections/whole-bean-coffee/products/costarica-elcedral?variant=7224650891325",
+      "personalNotes": "Haven't tried this one yet!",
+      "favorite": false,
+      "private": true
+    },
+    "3": {
+      "name": "China Natural",
+      "image": "https://dosenashville.com/cdn/shop/files/ChinaNatural_png.webp?v=1719430762&width=1445",
+      "origin": "Xishuangbanna, Yunnan, China",
+      "roastLevel": 3,
+      "elevation": "",
+      "process": "Natural",
+      "varietals": "Catimor",
+      "tastingNotes": [
+        "Cherry",
+        "Citrus",
+        "Tropical Fruit"
+      ],
+      "purchaseLocation": "https://dosenashville.com/products/dose-china-natural?variant=41707572658311",
+      "personalNotes": "Haven't tried this one yet!",
+      "favorite": false,
+      "private": true
+    }
+  }
+}
