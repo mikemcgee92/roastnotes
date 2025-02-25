@@ -14,9 +14,21 @@ const getAllCoffees = async () => {
   return response;
 };
 
+// get only user coffees
+const getCoffeesByUid = async (uid) => {
+  const get = await fetch(`${endpoint}/coffees.json?orderBy="uid"&equalTo="${uid}"`, {
+    method: 'GET',
+    headers: {
+      'Content-Type': 'application/json',
+    },
+  });
+  const response = get.json();
+  return response;
+};
+
 // get single coffee
-const getCoffee = async (id) => {
-  const get = await fetch(`${endpoint}/coffees/${id}.json`, {
+const getCoffee = async (firebaseKey) => {
+  const get = await fetch(`${endpoint}/coffees/${firebaseKey}.json`, {
     method: 'GET',
     headers: {
       'Content-Type': 'application/json',
@@ -40,8 +52,8 @@ const createCoffee = async (payload) => {
 };
 
 // update coffee
-const updateCoffee = async (id, payload) => {
-  const patch = await fetch(`${endpoint}/coffees/${id}.json`, {
+const updateCoffee = async (firebaseKey, payload) => {
+  const patch = await fetch(`${endpoint}/coffees/${firebaseKey}.json`, {
     method: 'PATCH',
     headers: {
       'Content-Type': 'application/json',
@@ -53,15 +65,14 @@ const updateCoffee = async (id, payload) => {
 };
 
 // delete coffee
-const deleteCoffee = async (id) => {
-  const del = await fetch(`${endpoint}/coffees/${id}.json`, {
+const deleteCoffee = async (firebaseKey) => {
+  const response = await fetch(`${endpoint}/coffees/${firebaseKey}.json`, {
     method: 'DELETE',
     headers: {
       'Content-Type': 'application/json',
     },
   });
-  const response = del.json();
   return response;
 };
 
-export { getAllCoffees, getCoffee, createCoffee, updateCoffee, deleteCoffee };
+export { getAllCoffees, getCoffeesByUid, getCoffee, createCoffee, updateCoffee, deleteCoffee };

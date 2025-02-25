@@ -18,10 +18,10 @@ export default function NavBar() {
             <Link className="nav-link" href="/">
               home
             </Link>
-            <Link className="nav-link" href="/">
+            <Link className="nav-link" href="/coffees">
               saved
             </Link>
-            <Link className="nav-link" href="/">
+            <Link className="nav-link" href="/coffees/new">
               +add
             </Link>
           </Nav>

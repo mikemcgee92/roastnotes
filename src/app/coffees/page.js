@@ -1,18 +1,16 @@
 'use client';
 
-// any component that uses useAuth needs this because if a component directly imports useAuth, it needs to be a client component since useAuth uses React hooks.
+import { React, useState, useEffect, useCallback } from 'react';
+import { useAuth } from '@/utils/context/authContext';
+import { getCoffeesByUid } from '../../api/coffeesData';
+import CoffeeCard from '../../components/CoffeeCard';
 
-// import { useAuth } from '@/utils/context/authContext';
-import { useCallback, useEffect, useState } from 'react';
-import { getAllCoffees } from '../api/coffeesData';
-import CoffeeCard from '../components/CoffeeCard';
-
-function Home() {
-  // const { user } = useAuth();
+export default function SavedCoffees() {
+  const { user } = useAuth();
   const [coffees, setCoffees] = useState([]);
 
   const loadCoffees = useCallback(async () => {
-    const coffeesData = await getAllCoffees();
+    const coffeesData = await getCoffeesByUid(user.uid);
     setCoffees(
       Object.keys(coffeesData).map((key) => ({
         ...coffeesData[key],
@@ -43,5 +41,3 @@ function Home() {
     </div>
   );
 }
-
-export default Home;
