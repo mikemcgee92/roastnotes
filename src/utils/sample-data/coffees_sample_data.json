@@ -16,7 +16,8 @@
       "purchaseLocation": "https://goodcitizencoffee.com/products/chin-up?selling_plan=3565191320&variant=42134167224472",
       "personalNotes": "Used by many Nashville coffee shops",
       "favorite": true,
-      "private": true
+      "private": true,
+      "uid": "lxkYdOOahKdxuE5STLMvEUjg9sG3"
     },
     "2": {
       "name": "Costa Rica El Cedral Natural",
@@ -34,7 +35,8 @@
       "purchaseLocation": "https://anchorheadcoffee.com/collections/whole-bean-coffee/products/costarica-elcedral?variant=7224650891325",
       "personalNotes": "Haven't tried this one yet!",
       "favorite": false,
-      "private": true
+      "private": true,
+      "uid": "lxkYdOOahKdxuE5STLMvEUjg9sG3"
     },
     "3": {
       "name": "China Natural",
@@ -52,7 +54,8 @@
       "purchaseLocation": "https://dosenashville.com/products/dose-china-natural?variant=41707572658311",
       "personalNotes": "Haven't tried this one yet!",
       "favorite": false,
-      "private": true
+      "private": true,
+      "uid": "lxkYdOOahKdxuE5STLMvEUjg9sG3"
     }
   }
 }

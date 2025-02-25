@@ -1,12 +1,19 @@
 'use client';
 
 import { Button } from 'react-bootstrap';
-// import { useRouter } from 'next/navigation';
+import { useRouter } from 'next/navigation';
 import PropTypes from 'prop-types';
-// import roastLevel from '../api/roastLevels';
+import { deleteCoffee } from '../api/coffeesData';
 
-export default function CoffeeCard({ coffee }) {
-  // const router = useRouter();
+export default function CoffeeCard({ coffee, onUpdate }) {
+  const router = useRouter();
+  const currentUrl = window.location.href;
+
+  const deleteThisCoffee = () => {
+    if (window.confirm(`Delete ${coffee.name}?`)) {
+      deleteCoffee(coffee.firebaseKey).then(() => onUpdate());
+    }
+  };
 
   return (
     /* From Uiverse.io by Yaya12085 */
@@ -20,9 +27,21 @@ export default function CoffeeCard({ coffee }) {
         <p className="block font-sans text-base font-light leading-relaxed text-inherit antialiased">{coffee.tastingNotes.map((note) => `${note}, `)}</p>
       </div>
       <div className="p-6 pt-0">
-        <Button data-ripple-light="true" type="button" className="btn">
+        <Button onClick={() => router.push(`/coffees/${coffee.firebaseKey}`)} data-ripple-light="true" type="button" className="btn">
           View
         </Button>
+        {currentUrl.includes('coffees') ? (
+          <div>
+            <Button onClick={() => router.push(`/coffees/edit/${coffee.firebaseKey}`)} data-ripple-light="true" type="button" className="btn">
+              Edit
+            </Button>
+            <Button onClick={deleteThisCoffee} data-ripple-light="true" type="button" className="btn">
+              Delete
+            </Button>
+          </div>
+        ) : (
+          ''
+        )}
       </div>
     </div>
   );
@@ -30,10 +49,11 @@ export default function CoffeeCard({ coffee }) {
 
 CoffeeCard.propTypes = {
   coffee: PropTypes.shape({
-    id: PropTypes.string.isRequired,
+    firebaseKey: PropTypes.string.isRequired,
     name: PropTypes.string.isRequired,
     image: PropTypes.string,
     origin: PropTypes.string,
     tastingNotes: PropTypes.arrayOf,
   }).isRequired,
+  onUpdate: PropTypes.func,
 };
