@@ -22,19 +22,20 @@ function Home() {
 
   return (
     <div
-      className="text-center d-flex flex-column justify-content-center align-content-center"
+      className="text-center d-flex flex-row flex-wrap justify-content-start gap-4"
       style={{
         height: '90vh',
         padding: '30px',
-        maxWidth: '400px',
+        maxWidth: '1000px',
         margin: '0 auto',
       }}
     >
       {console.log(coffees)}
-      {Object.values(coffees).map((coffee) => {
-        const domString = <CoffeeCard key={coffee.id} coffee={coffee} />;
-        return domString;
-      })}
+      {Object.values(coffees).map((coffee) => (
+        <div key={coffee.id} style={{ width: 'calc(33.33% - 1rem)' }}>
+          <CoffeeCard coffee={coffee} />
+        </div>
+      ))}
     </div>
   );
 }
