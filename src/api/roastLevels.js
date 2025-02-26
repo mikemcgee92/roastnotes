@@ -1,4 +1,4 @@
-const roastLevel = [
+const roastLevelTable = [
   {
     id: 0,
     level: 'Green',
@@ -29,4 +29,4 @@ const roastLevel = [
   },
 ];
 
-export default roastLevel;
+export default roastLevelTable;
