@@ -32,7 +32,7 @@ export default function CoffeeForm({ obj = initialState }) {
 
   useEffect(() => {
     if (obj.firebaseKey) setFormInput(obj);
-  }, [obj, user]);
+  }, [obj]);
 
   const handleChange = (e) => {
     const { name, value } = e.target;
@@ -62,8 +62,8 @@ export default function CoffeeForm({ obj = initialState }) {
 
     try {
       if (obj.firebaseKey) {
-        await updateCoffee(payload);
-        router.push(`/coffees/${obj.firebaseKey}`);
+        await updateCoffee(obj.firebaseKey, payload);
+        router.push(`/coffees`);
       } else {
         await createCoffee(payload);
         router.push('/coffees');

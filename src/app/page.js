@@ -12,6 +12,7 @@ function Home() {
   const [coffees, setCoffees] = useState([]);
 
   const loadCoffees = useCallback(async () => {
+    // load in all firebase keys for coffee objects to display
     const coffeesData = await getAllCoffees();
     setCoffees(
       Object.keys(coffeesData).map((key) => ({
