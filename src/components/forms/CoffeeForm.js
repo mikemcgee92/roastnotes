@@ -38,8 +38,7 @@ export default function CoffeeForm({ obj = initialState }) {
     const { name, value } = e.target;
     // Check if the field being checked is tasting notes and convert the value to an array if so
     if (name === 'tastingNotes') {
-      const notesArr = [];
-      notesArr.push(value);
+      const notesArr = value.split(',');
       setFormInput((prevState) => ({
         ...prevState,
         tastingNotes: notesArr,
@@ -121,8 +120,8 @@ export default function CoffeeForm({ obj = initialState }) {
 
       {/* tasting notes */}
       {/* TODO: Handle input for more than one tasting note */}
-      <FloatingLabel controlId="floatingInput7" label="Tasting Notes">
-        <Form.Control type="text" placeholder="Tasting Notes" name="tastingNotes" value={formInput.tastingNotes} onChange={handleChange} />
+      <FloatingLabel controlId="floatingInput7" label="tasting notes (separated by commas)">
+        <Form.Control type="text" placeholder="tasting notes (separated by commas)" name="tastingNotes" value={formInput.tastingNotes} onChange={handleChange} />
       </FloatingLabel>
 
       {/* purchase location */}
