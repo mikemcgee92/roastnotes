@@ -17,7 +17,7 @@ const initialState = {
   name: '',
   origin: '',
   personalNotes: '',
-  private: true,
+  private: false,
   process: '',
   purchaseLocation: '',
   roastLevel: '',
