@@ -2,7 +2,7 @@
 [View Deployed App](https://roastnotes.netlify.app/)
 
 ## Overview
-[Loom walkthrough](https://www.loom.com/share/d9df9dd5293a4723b3d29f96e29880f0?sid=49a28352-3cb1-4956-9ccc-d16e95a7dae1)
+[Loom walkthrough](https://www.loom.com/share/9ea5f54507b2424babfbc009914a6a64?sid=f884c54c-3469-4217-81e4-1d8a3625b6fc)
 
 RoastNotes is an app for coffee lovers to log and share their favorite beans.
 
