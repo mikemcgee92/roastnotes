@@ -2,13 +2,11 @@
 
 // any component that uses useAuth needs this because if a component directly imports useAuth, it needs to be a client component since useAuth uses React hooks.
 
-// import { useAuth } from '@/utils/context/authContext';
 import { useCallback, useEffect, useState } from 'react';
 import { getAllCoffees } from '../api/coffeesData';
 import CoffeeCard from '../components/CoffeeCard';
 
 function Home() {
-  // const { user } = useAuth();
   const [coffees, setCoffees] = useState([]);
 
   const loadCoffees = useCallback(async () => {
