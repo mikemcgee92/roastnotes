@@ -8,17 +8,44 @@ import CoffeeCard from '../components/CoffeeCard';
 
 function Home() {
   const [coffees, setCoffees] = useState([]);
+  const [searchTerm, setSearchTerm] = useState('');
+
+  const getSearchTerm = () => {
+    const url = window.location.href;
+    console.log(url.includes('?search='));
+    if (url.includes('?search=')) {
+      // get everything after the '?search=' and set the search term to it
+      const urlSplit = url.split('?search=');
+      setSearchTerm(urlSplit[1]);
+    }
+  };
 
   const loadCoffees = useCallback(async () => {
     // load in all firebase keys for coffee objects to display
+    setCoffees([]);
     const coffeesData = await getAllCoffees();
-    setCoffees(
-      Object.keys(coffeesData).map((key) => ({
-        ...coffeesData[key],
-        firebaseKey: key,
-      })),
-    );
+    console.log(searchTerm);
+    if (searchTerm) {
+      const searchedCoffees = coffees.filter((coffee) => coffee.name.toLowerCase().includes(searchTerm));
+      setCoffees(
+        Object.keys(searchedCoffees).map((key) => ({
+          ...searchedCoffees[key],
+          firebaseKey: key,
+        })),
+      );
+    } else {
+      setCoffees(
+        Object.keys(coffeesData).map((key) => ({
+          ...coffeesData[key],
+          firebaseKey: key,
+        })),
+      );
+    }
   }, [setCoffees]);
+
+  useEffect(() => {
+    getSearchTerm();
+  }, [getSearchTerm]);
 
   useEffect(() => {
     loadCoffees();
