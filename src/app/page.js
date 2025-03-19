@@ -1,7 +1,5 @@
 'use client';
 
-// any component that uses useAuth needs this because if a component directly imports useAuth, it needs to be a client component since useAuth uses React hooks.
-
 import { useCallback, useEffect, useState } from 'react';
 import { getAllCoffees } from '../api/coffeesData';
 import CoffeeCard from '../components/CoffeeCard';
@@ -10,38 +8,40 @@ function Home() {
   const [coffees, setCoffees] = useState([]);
   const [searchTerm, setSearchTerm] = useState('');
 
-  const getSearchTerm = () => {
+  const getSearchTerm = useCallback(() => {
     const url = window.location.href;
-    console.log(url.includes('?search='));
     if (url.includes('?search=')) {
       // get everything after the '?search=' and set the search term to it
       const urlSplit = url.split('?search=');
       setSearchTerm(urlSplit[1]);
     }
-  };
+  }, [setSearchTerm]);
 
   const loadCoffees = useCallback(async () => {
-    // load in all firebase keys for coffee objects to display
-    setCoffees([]);
-    const coffeesData = await getAllCoffees();
-    console.log(searchTerm);
-    if (searchTerm) {
-      const searchedCoffees = coffees.filter((coffee) => coffee.name.toLowerCase().includes(searchTerm));
-      setCoffees(
-        Object.keys(searchedCoffees).map((key) => ({
-          ...searchedCoffees[key],
-          firebaseKey: key,
-        })),
-      );
-    } else {
-      setCoffees(
-        Object.keys(coffeesData).map((key) => ({
-          ...coffeesData[key],
-          firebaseKey: key,
-        })),
-      );
+    try {
+      // Reset coffees state before loading
+      setCoffees([]);
+
+      const coffeesData = await getAllCoffees();
+
+      // put all data into an array
+      const formattedCoffees = Object.keys(coffeesData).map((key) => ({
+        ...coffeesData[key],
+        firebaseKey: key,
+      }));
+
+      // Apply search filter if searchTerm exists
+      if (searchTerm) {
+        const searchedCoffees = formattedCoffees.filter((coffee) => coffee.name.toLowerCase().includes(searchTerm.toLowerCase()));
+        setCoffees(searchedCoffees);
+      } else {
+        setCoffees(formattedCoffees);
+      }
+    } catch (error) {
+      console.error('Error loading coffees:', error);
+      setCoffees([]);
     }
-  }, [setCoffees]);
+  }, [setCoffees, searchTerm]);
 
   useEffect(() => {
     getSearchTerm();
