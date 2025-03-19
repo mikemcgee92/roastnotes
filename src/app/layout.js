@@ -22,12 +22,12 @@ RootLayout.propTypes = {
 
 // You can manage the metadata, tab content and info about your app dynamically using this. It will work on every page in your app:
 export const generateMetadata = async ({ params }) => ({
-    title: `RoastNotes ${params.slug || ''}`, // Dynamically set the title using route parameters
-    description: `A coffee logging app`, // Dynamic description
-    // Add other metadata fields as needed, like keywords, open graph tags, etc.
-    keywords: [`${params.slug}`, 'coffee', 'roast'],
-    openGraph: {
-      title: `Open Graph Title for ${params.slug}`,
-      description: `Open Graph Description for ${params.slug}`,
-    },
-  });
+  title: `RoastNotes ${params.slug || ''}`, // Dynamically set the title using route parameters
+  description: `A coffee logging app`, // Dynamic description
+  // Add other metadata fields as needed, like keywords, open graph tags, etc.
+  keywords: [`${params.slug}`, 'coffee', 'roast'],
+  openGraph: {
+    title: `RoastNotes`,
+    description: `A coffee journal for brew connoisseurs`,
+  },
+});
